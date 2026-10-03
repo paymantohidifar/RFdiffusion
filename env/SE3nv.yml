@@ -1,17 +1,19 @@
 name: SE3nv
 channels:
   # - defaults
-  - conda-forge
   - pytorch
-  - dglteam
   - nvidia
+  - dglteam
+  - conda-forge
 dependencies:
   - python=3.9
-  - pytorch=1.9
-  - torchaudio
-  - torchvision
+  # Pin to the CUDA 11.1 builds from the pytorch channel. Without the build
+  # string, conda-forge's CPU-only pytorch 1.9 builds satisfy the spec.
+  - pytorch::pytorch=1.9.*=*cuda11.1*
+  - pytorch::torchvision=0.10.*=*cu111*
+  - pytorch::torchaudio=0.9.*
   - cudatoolkit=11.1
-  - dgl-cuda11.1
+  - dglteam::dgl-cuda11.1
   - pip
   - pip:
     - hydra-core
