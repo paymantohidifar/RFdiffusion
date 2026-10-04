@@ -10,9 +10,9 @@ dependencies:
   - numpy<2
   # Pin to the CUDA 11.1 builds from the pytorch channel. Without the build
   # string, conda-forge's CPU-only pytorch 1.9 builds satisfy the spec.
+  # torchvision/torchaudio are not used by RFdiffusion. torchvision 0.10 also
+  # needs jpeg<=9b, which no conda-forge pillow build for py3.9 satisfies.
   - pytorch::pytorch=1.9.*=*cuda11.1*
-  - pytorch::torchvision=0.10.*=*cu111*
-  - pytorch::torchaudio=0.9.*
   - cudatoolkit=11.1
   - dglteam::dgl-cuda11.1
   - pip
