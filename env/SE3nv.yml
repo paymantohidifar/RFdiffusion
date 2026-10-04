@@ -13,6 +13,9 @@ dependencies:
   # torchvision/torchaudio are not used by RFdiffusion. torchvision 0.10 also
   # needs jpeg<=9b, which no conda-forge pillow build for py3.9 satisfies.
   - pytorch::pytorch=1.9.*=*cuda11.1*
+  # MKL 2024.1+ dropped iJIT_NotifyEvent, which these pytorch builds link
+  # against; import fails with "undefined symbol: iJIT_NotifyEvent".
+  - mkl<2024.1
   - cudatoolkit=11.1
   - dglteam::dgl-cuda11.1
   - pip
